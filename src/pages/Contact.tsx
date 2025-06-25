@@ -16,24 +16,27 @@ const Contact = () => {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
+    formData.append("access_key", "ff34937d-d72f-499b-ac68-0053c5539df2"); // Web3Forms access key
+
     try {
-      const response = await fetch("https://formsubmit.co/ajax/karthikjungleemara@gmail.com", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          Accept: "application/json"
-        },
-        body: formData
+        body: formData,
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (result.success) {
         setSuccess(true);
         form.reset();
         setTimeout(() => setSuccess(false), 4000);
       } else {
         alert("Submission failed. Please try again.");
+        console.error(result);
       }
     } catch (error) {
       console.error("Error submitting form:", error);
+      alert("An unexpected error occurred.");
     }
   };
 
@@ -121,10 +124,11 @@ const Contact = () => {
                   className="min-h-[120px] border-gray-200 focus:ring-blue-500"
                 />
 
-                {/* Hidden Settings for FormSubmit */}
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_template" value="box" />
-                <input type="hidden" name="_next" value="https://yourdomain.com/thank-you" />
+                {/* Hidden Fields for Web3Forms */}
+                <input type="hidden" name="from_name" value="Website Inquiry" />
+                <input type="hidden" name="replyto" value="karthikjungleemara@gmail.com" />
+                <input type="hidden" name="subject" value="New Contact Form Message" />
+                <input type="hidden" name="redirect" value="https://yourdomain.com/thank-you" />
 
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                   <Button
