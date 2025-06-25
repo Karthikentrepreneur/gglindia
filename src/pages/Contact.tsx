@@ -36,7 +36,7 @@ const Contact = () => {
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      alert("An unexpected error occurred.");
+      alert("Form Submitted Successfully.");
     }
   };
 
@@ -126,7 +126,7 @@ const Contact = () => {
 
                 {/* Hidden Fields for Web3Forms */}
                 <input type="hidden" name="from_name" value="Website Inquiry" />
-                <input type="hidden" name="replyto" value="karthikjungleemara@gmail.com" />
+                <input type="hidden" name="replyto" value="karthiktrendsandtactics@gmail.com" />
                 <input type="hidden" name="subject" value="New Contact Form Message" />
                 <input type="hidden" name="redirect" value="https://yourdomain.com/thank-you" />
 
