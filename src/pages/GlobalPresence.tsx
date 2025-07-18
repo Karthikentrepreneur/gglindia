@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
-import ContactMapContainer from '@/components/ContactMapContainer';
-import ContactSidebar from '@/components/ContactSidebar';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
+import MapContainer from '@/components/MapContainer';
+import Sidebar from '@/components/Sidebar';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Menu, Map, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -27,12 +27,8 @@ const GlobalPresence = () => {
   const toggleView = () => {
     setShowMap(!showMap);
   };
- 
-
-  return null;
-};
   return <div className="min-h-screen flex flex-col bg-gradient-to-b from-amber-50/30 to-white">
-      <Navigation />
+      <Header />
       
       <motion.div initial={{
       opacity: 0
@@ -64,7 +60,7 @@ const GlobalPresence = () => {
         stiffness: 300,
         damping: 30
       }} className={`transition-all duration-300 ease-in-out ${isMobile ? 'w-full' : 'w-[60%]'}`}>
-            <ContactMapContainer />
+            <MapContainer />
           </motion.main>}
         
         {/* Sidebar for locations - 35% on desktop, full width on mobile when active */}
@@ -85,7 +81,7 @@ const GlobalPresence = () => {
         stiffness: 300,
         damping: 30
       }} className={`transition-all duration-300 ease-in-out ${isMobile ? 'w-full pt-12' : 'w-[35%]'}`}>
-            <ContactSidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+            <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
           </motion.div>}
         
         {/* Mobile toggle buttons */}
