@@ -247,7 +247,7 @@ export const QuickEnquiry = () => {
 
             <div>
               <ReCAPTCHA
-                sitekey="6LftQZMrAAAAANCd0GJHoFpMt6o-3CwjO5v2cBoh"
+                sitekey="6LfriJMrAAAAALeXJtiHlSiAxb9YcOwLVGkKrCeu"
                 onChange={(token) => {
                   setRecaptchaToken(token);
                   setCaptchaError(false);
