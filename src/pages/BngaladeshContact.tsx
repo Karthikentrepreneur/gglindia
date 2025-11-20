@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from 'react';
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { motion } from "framer-motion";
-import { Phone, MapPin } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import LocationsSection from "@/components/LocationsSection";
+import { motion, AnimatePresence } from 'framer-motion';
+import { Send, CheckCircle } from 'lucide-react';
 
 const bangladeshNavPaths = {
   home: "/Bngaladesh/home",
@@ -13,86 +17,157 @@ const bangladeshNavPaths = {
 };
 
 const BngaladeshContact = () => {
+  const [success, setSuccess] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    formData.append("access_key", "ff34937d-d72f-499b-ac68-0053c5539df2"); // Web3Forms access key
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSuccess(true);
+        form.reset();
+        setTimeout(() => setSuccess(false), 4000);
+      } else {
+        alert("Submission failed. Please try again.");
+        console.error(result);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Form Submitted Successfully.");
+    }
+  };
+
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col relative">
       <Header navPaths={bangladeshNavPaths} />
-      <main className="flex-grow pt-16 md:pt-20">
-        <section className="bg-gradient-to-r from-gray-900 to-brand-navy text-white py-16 md:py-20 mt-2">
+
+      <main className="flex-grow">
+        {/* Hero Section */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="relative h-[40vh] flex items-center justify-center bg-blue-600 overflow-hidden"
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-navy to-brand-navy/90" />
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-center px-4 relative z-10"
+          >
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-5">Get in Touch</h1>
+            <p className="text-lg text-white/90 max-w-2xl mx-auto font-light">
+              We're here to help and answer any questions you might have.
+            </p>
+          </motion.div>
+        </motion.section>
+
+        {/* Location Map and Selector */}
+        <section className="py-12 bg-white relative">
+          <LocationsSection />
+        </section>
+
+        {/* Contact Form Section */}
+        <section id="contact-form" className="py-16 bg-gray-50 relative">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="max-w-3xl"
+              transition={{ duration: 0.8 }}
+              className="p-8 rounded-xl shadow-lg max-w-2xl mx-auto bg-slate-100"
             >
-              <p className="uppercase tracking-[0.3em] text-amber-300 text-sm mb-4">Bangladesh</p>
-              <h1 className="text-3xl md:text-5xl font-bold mb-4">Dhaka Contact</h1>
-              <p className="text-white/90 text-lg md:text-xl leading-relaxed">
-                Reach our Bangladesh team directly for on-ground support, quotations, and shipment assistance.
+              <h2 className="text-2xl font-bold mb-4">Send us a Message</h2>
+              <p className="text-gray-600 mb-6">
+                Fill in the form below and we'll get back to you as soon as possible.
               </p>
-            </motion.div>
-          </div>
-        </section>
-
-        <section className="py-14 bg-gray-50">
-          <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="space-y-6"
-            >
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-3">Visit or Call Us</h2>
-                <div className="w-16 h-1 bg-brand-gold mb-4" />
-                <p className="text-gray-600">
-                  You will find our Bangladesh office inside Police Plaza Concord, ready to support your cargo needs across the country.
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="p-3 bg-amber-100 rounded-lg text-brand-navy">
-                    <MapPin className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-brand-navy">Address</h3>
-                    <p className="text-gray-700 mt-2 leading-relaxed">
-                      ID #9-N (New), 9-M(Old-N), 9th floor, Tower 1, Police Plaza Concord No.2, Road # 144, Gulshan Model Town,
-                      Dhaka 1215, Bangladesh
-                    </p>
-                  </div>
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <Input
+                    placeholder="First Name"
+                    name="firstName"
+                    required
+                    className="border-gray-200 focus:ring-blue-500"
+                  />
+                  <Input
+                    placeholder="Last Name"
+                    name="lastName"
+                    required
+                    className="border-gray-200 focus:ring-blue-500"
+                  />
                 </div>
-                <div className="flex items-start gap-3">
-                  <div className="p-3 bg-amber-100 rounded-lg text-brand-navy">
-                    <Phone className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-brand-navy">Phone</h3>
-                    <p className="text-gray-700 mt-2">+880 1716 620989</p>
-                  </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <Input
+                    placeholder="Email"
+                    type="email"
+                    name="email"
+                    required
+                    className="border-gray-200 focus:ring-blue-500"
+                  />
+                  <Input
+                    placeholder="Phone"
+                    name="phone"
+                    className="border-gray-200 focus:ring-blue-500"
+                  />
                 </div>
-              </div>
-            </motion.div>
+                <Input
+                  placeholder="Organization/Company"
+                  name="organization"
+                  className="border-gray-200 focus:ring-blue-500"
+                />
+                <Textarea
+                  placeholder="Your Message"
+                  name="message"
+                  required
+                  className="min-h-[120px] border-gray-200 focus:ring-blue-500"
+                />
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="w-full h-full min-h-[320px] overflow-hidden rounded-xl shadow-lg bg-white"
-            >
-              <iframe
-                title="Bangladesh Office Map"
-                src="https://www.google.com/maps/d/u/0/embed?mid=1X0GsrCFJRFoj6Q67PJztKAAzkDlKkXY&ehbc=2E312F&noprof=1&ll=23.751166499999993%2C90.3906431&z=17"
-                className="w-full h-[360px] md:h-[420px] border-0"
-                loading="lazy"
-                allowFullScreen
-              />
+                {/* Hidden Fields for Web3Forms */}
+                <input type="hidden" name="from_name" value="Website Inquiry" />
+                <input type="hidden" name="replyto" value="karthiktrendsandtactics@gmail.com" />
+                <input type="hidden" name="subject" value="New Contact Form Message" />
+                <input type="hidden" name="redirect" value="https://yourdomain.com/thank-you" />
+
+                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                  <Button
+                    type="submit"
+                    className="w-full text-white py-6 flex items-center justify-center gap-2 bg-brand-navy"
+                  >
+                    Send Message
+                    <Send size={18} />
+                  </Button>
+                </motion.div>
+              </form>
+
+              {/* Success Popup */}
+              <AnimatePresence>
+                {success && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    className="mt-6 p-4 bg-green-100 text-green-700 rounded-lg flex items-center gap-2"
+                  >
+                    <CheckCircle className="text-green-600" />
+                    Your message has been sent successfully!
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           </div>
         </section>
       </main>
+
       <Footer />
     </div>
   );
