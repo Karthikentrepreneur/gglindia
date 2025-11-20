@@ -31,7 +31,7 @@ const BangladeshHome = () => {
       <Header navPaths={bangladeshNavPaths} />
       <main className="flex-grow pt-16">
         <Hero
-          sliderImages={["/transport.jpg", "/airfrieght.jpg"]}
+          sliderImages={["/oceanf.png", "/oceanf.png"]}
           badgeText="Bangladesh Logistics Hub"
           headline={'Delivering Excellence for <span class="text-yellow-500">Bangladesh</span> Supply Chains'}
           subheadline="GGL Bangladesh connects Dhaka with global trade lanes through air, ocean, and land freight expertise backed by local service."
