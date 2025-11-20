@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Phone, Mail, ArrowRight, Facebook, Linkedin, ChevronRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 interface AddressInfo {
   title: string;
   address: string;
@@ -43,7 +43,9 @@ export const Footer = () => {
       }
     }
   };
-  const addresses: AddressInfo[] = [{
+  const location = useLocation();
+
+  const defaultAddresses: AddressInfo[] = [{
     title: "Chennai Office",
     address: "Old No. G1, New G3, KAIZEN, 2nd & 3rd Floor, Plot No. 565Q, G Block, Anna Nagar East, Chennai, Tamil Nadu – 600102",
     phone: "+91 9123523496"
@@ -64,10 +66,24 @@ export const Footer = () => {
     address: "Room No. 29, 4th Floor, 6, Jawaharlal Nehru Road, Siddha Esplanade, Adjacent to Metro Central (Previously Metro Cinema), Kolkata, West Bengal – 700013",
     phone: "+91 6290921534"
   }];
+
+  const bangladeshAddress: AddressInfo = {
+    title: "Bangladesh Office",
+    address: "ID #9-N (New), 9-M(Old-N), 9th floor, Tower 1, Police Plaza Concord No.2, Road # 144, Gulshan Model Town, Dhaka 1215, Bangladesh",
+    phone: "+880 1716 620989"
+  };
+
+  const isBangladeshPage = useMemo(() => location.pathname.startsWith("/bangladesh"), [location.pathname]);
+
+  const addresses = isBangladeshPage ? [bangladeshAddress] : defaultAddresses;
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const handleNext = () => {
     setCurrentIndex(prev => (prev + 1) % addresses.length);
   };
+
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [isBangladeshPage]);
   return <footer className="pt-16 pb-8 bg-gradient-to-b from-white to-gray-100">
       <div className="container mx-auto px-4">
         <div className="h-1 bg-gradient-to-r from-brand-navy via-brand-gold to-brand-navy rounded-full mb-8" />
