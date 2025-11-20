@@ -1,12 +1,34 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, Linkedin, Facebook } from "lucide-react";
 import { useState, useEffect } from "react";
 import CountrySelector from "../common/CountrySelector";
-export const Header = () => {
+type NavPaths = {
+  home: string;
+  about: string;
+  services: string;
+  careers: string;
+  contact: string;
+};
+
+type HeaderProps = {
+  navPaths?: Partial<NavPaths>;
+};
+
+const defaultNavPaths: NavPaths = {
+  home: "/",
+  about: "/about",
+  services: "/services",
+  careers: "/careers",
+  contact: "/contact",
+};
+
+export const Header = ({ navPaths }: HeaderProps) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
+
+  const mergedPaths = { ...defaultNavPaths, ...navPaths };
 
   // Scroll effect for header background
   useEffect(() => {
@@ -44,7 +66,7 @@ export const Header = () => {
     }
   };
   const handleLogoClick = () => {
-    navigate("/");
+    navigate(mergedPaths.home);
     window.scrollTo(0, 0);
   };
   return <header className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white py-2 shadow-md' : 'bg-white/95 py-2'}`}>
@@ -61,19 +83,19 @@ export const Header = () => {
           </button>
 
           <nav className="hidden md:flex gap-6 items-center">
-            <button onClick={() => handleNavClick("/")} className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${location.pathname === '/' ? 'text-brand-gold' : ''}`}>
+            <button onClick={() => handleNavClick(mergedPaths.home)} className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${location.pathname === mergedPaths.home ? 'text-brand-gold' : ''}`}>
               Home
             </button>
-            <button onClick={() => handleNavClick("/about")} className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${location.pathname === '/about' ? 'text-brand-gold' : ''}`}>
+            <button onClick={() => handleNavClick(mergedPaths.about)} className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${location.pathname === mergedPaths.about ? 'text-brand-gold' : ''}`}>
               About Us
             </button>
-            <button onClick={() => handleNavClick("/services")} className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${location.pathname.includes('/services') ? 'text-brand-gold' : ''}`}>
+            <button onClick={() => handleNavClick(mergedPaths.services)} className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${location.pathname.includes(mergedPaths.services) ? 'text-brand-gold' : ''}`}>
               Services
             </button>
-            <button onClick={() => handleNavClick("/careers")} className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${location.pathname === '/careers' ? 'text-brand-gold' : ''}`}>
+            <button onClick={() => handleNavClick(mergedPaths.careers)} className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${location.pathname === mergedPaths.careers ? 'text-brand-gold' : ''}`}>
               Careers
             </button>
-            <button onClick={() => handleNavClick("/contact")} className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${location.pathname === '/contact' ? 'text-brand-gold' : ''}`}>
+            <button onClick={() => handleNavClick(mergedPaths.contact)} className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${location.pathname === mergedPaths.contact ? 'text-brand-gold' : ''}`}>
               Contact Us
             </button>
 
@@ -89,7 +111,7 @@ export const Header = () => {
             <CountrySelector />
 
             {/* ✅ Get A Quote Button - scroll to form */}
-            <button onClick={() => handleNavClick("/contact", "contact-form")} className="px-5 py-2 bg-[#F6B100] text-black rounded-full hover:bg-[#FFCC33] transition font-medium">
+            <button onClick={() => handleNavClick(mergedPaths.contact, "contact-form")} className="px-5 py-2 bg-[#F6B100] text-black rounded-full hover:bg-[#FFCC33] transition font-medium">
               Get A Quote
             </button>
           </nav>
@@ -98,19 +120,19 @@ export const Header = () => {
         {/* Mobile Navigation */}
         <div className={`${isMobileMenuOpen ? 'max-h-screen opacity-100 py-4' : 'max-h-0 opacity-0'} md:hidden overflow-hidden transition-all duration-300 ease-in-out`}>
           <nav className="flex flex-col gap-4 border-t mt-4 border-gray-100">
-            <button onClick={() => handleNavClick("/")} className={`text-gray-800 hover:text-brand-gold font-medium ${location.pathname === '/' ? 'text-brand-gold' : ''}`}>
+            <button onClick={() => handleNavClick(mergedPaths.home)} className={`text-gray-800 hover:text-brand-gold font-medium ${location.pathname === mergedPaths.home ? 'text-brand-gold' : ''}`}>
               Home
             </button>
-            <button onClick={() => handleNavClick("/about")} className={`text-gray-800 hover:text-brand-gold font-medium ${location.pathname === '/about' ? 'text-brand-gold' : ''}`}>
+            <button onClick={() => handleNavClick(mergedPaths.about)} className={`text-gray-800 hover:text-brand-gold font-medium ${location.pathname === mergedPaths.about ? 'text-brand-gold' : ''}`}>
               About Us
             </button>
-            <button onClick={() => handleNavClick("/services")} className={`text-gray-800 hover:text-brand-gold font-medium ${location.pathname.includes('/services') ? 'text-brand-gold' : ''}`}>
+            <button onClick={() => handleNavClick(mergedPaths.services)} className={`text-gray-800 hover:text-brand-gold font-medium ${location.pathname.includes(mergedPaths.services) ? 'text-brand-gold' : ''}`}>
               Services
             </button>
-            <button onClick={() => handleNavClick("/careers")} className={`text-gray-800 hover:text-brand-gold font-medium ${location.pathname === '/careers' ? 'text-brand-gold' : ''}`}>
+            <button onClick={() => handleNavClick(mergedPaths.careers)} className={`text-gray-800 hover:text-brand-gold font-medium ${location.pathname === mergedPaths.careers ? 'text-brand-gold' : ''}`}>
               Careers
             </button>
-            <button onClick={() => handleNavClick("/contact")} className={`text-gray-800 hover:text-brand-gold font-medium ${location.pathname === '/contact' ? 'text-brand-gold' : ''}`}>
+            <button onClick={() => handleNavClick(mergedPaths.contact)} className={`text-gray-800 hover:text-brand-gold font-medium ${location.pathname === mergedPaths.contact ? 'text-brand-gold' : ''}`}>
               Contact Us
             </button>
 
@@ -126,7 +148,7 @@ export const Header = () => {
             <CountrySelector />
 
             {/* ✅ Get A Quote Button - scroll to form */}
-            <button onClick={() => handleNavClick("/contact", "contact-form")} className="px-4 py-2 bg-brand-gold text-brand-navy rounded-md hover:bg-amber-500 text-center font-medium w-full">
+            <button onClick={() => handleNavClick(mergedPaths.contact, "contact-form")} className="px-4 py-2 bg-brand-gold text-brand-navy rounded-md hover:bg-amber-500 text-center font-medium w-full">
               Get A Quote
             </button>
           </nav>
