@@ -22,6 +22,10 @@ import ProjectCargo from "./pages/services/ProjectCargo";
 import CustomsClearance from "./pages/services/CustomsClearance";
 import GlobalPresence from "./pages/GlobalPresence";
 import { ScrollToTop } from "./components/common/ScrollToTop";
+import BngaladeshHome from "./pages/BngaladeshHome";
+import BngaladeshAbout from "./pages/BngaladeshAbout";
+import BngaladeshServices from "./pages/BngaladeshServices";
+import BngaladeshContact from "./pages/BngaladeshContact";
 
 // Create a new QueryClient instance
 const queryClient = new QueryClient();
@@ -43,6 +47,10 @@ function App() {
             <Route path="/terms-and-conditions" element={<TermsOfUse />} />
             <Route path="/services/transportation" element={<Transportation />} />
             <Route path="/global-presence" element={<GlobalPresence />} />
+            <Route path="/Bngaladesh/home" element={<BngaladeshHome />} />
+            <Route path="/Bngaladesh/about" element={<BngaladeshAbout />} />
+            <Route path="/Bngaladesh/services" element={<BngaladeshServices />} />
+            <Route path="/Bngaladesh/contact" element={<BngaladeshContact />} />
             {/* Service specific pages */}
             <Route path="/services/liquid-transportation" element={<LiquidTransportation />} />
             <Route path="/services/air-freight" element={<AirFreight />} />
