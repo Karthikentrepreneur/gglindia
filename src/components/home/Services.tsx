@@ -5,6 +5,12 @@ import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
+type ServicesProps = {
+  servicesPath?: string;
+  cardLinkPrefix?: string;
+  singleDestination?: boolean;
+};
+
 const EnhancedServiceCard = ({
   image,
   title,
@@ -61,7 +67,7 @@ const EnhancedServiceCard = ({
   );
 };
 
-export const Services = () => {
+export const Services = ({ servicesPath = "/services", cardLinkPrefix = "/services", singleDestination = false }: ServicesProps) => {
   const services = [
     {
       image: "/hom1.png",
@@ -69,7 +75,7 @@ export const Services = () => {
       description:
         "At GGL India, we specialize in providing comprehensive ocean freight solutions that cater to the diverse needs of our clients. Whether you're shipping large volumes or smaller consignments, our services are designed to ensure efficiency, reliability, and cost-effectiveness",
       icon: <Anchor />,
-      link: "/services/ocean-freight"
+      link: "ocean-freight"
     },
     {
       image: "/hom4.png",
@@ -77,7 +83,7 @@ export const Services = () => {
       description:
         "We collect your goods from your location and prepare them for consolidation. This includes proper labelling, packaging, and documentation to ensure smooth transit.",
       icon: <Warehouse />,
-      link: "/services/lcl-consolidation"
+      link: "lcl-consolidation"
     },
     {
       image: "/hom3.png",
@@ -85,7 +91,7 @@ export const Services = () => {
       description:
         "At GGL India, we understand that efficient transportation and distribution are the backbone of a seamless supply chain. Our dedicated fleet and robust infrastructure ensure that your goods reach their destination on time, every time.",
       icon: <Truck />,
-      link: "/services/transportation"
+      link: "transportation"
     },
     {
       image: "/warehosing.png",
@@ -93,7 +99,7 @@ export const Services = () => {
       description:
         "At GGL India, we offer comprehensive warehousing and third-party logistics (3PL) solutions designed to streamline your supply chain operations. Our services are tailored to meet the diverse needs of businesses, ensuring efficiency, reliability, and scalability.",
       icon: <Warehouse />,
-      link: "/services/warehousing"
+      link: "warehousing"
     },
     {
       image: "/aircargo1.png",
@@ -101,7 +107,7 @@ export const Services = () => {
       description:
         "At GGL India, we offer a comprehensive range of air freight services designed to meet all your shipping needs. Our expert air freight teams provide seamless air import, export, and express options, all on a convenient door-to-door basis.",
       icon: <Plane />,
-      link: "/services/air-freight"
+      link: "air-freight"
     },
     {
       image: "/cargoh1.png",
@@ -109,7 +115,7 @@ export const Services = () => {
       description:
         "At GGL, we specialize in managing project cargo—the transportation of large, heavy, high-value, or complex pieces of equipment and materials essential to major infrastructure, engineering, or industrial projects.",
       icon: <Warehouse />,
-      link: "/services/project-cargo"
+      link: "project-cargo"
     }
   ];
 
@@ -159,7 +165,10 @@ export const Services = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="h-full"
             >
-              <EnhancedServiceCard {...service} />
+              <EnhancedServiceCard
+                {...service}
+                link={singleDestination ? servicesPath : `${cardLinkPrefix}/${service.link}`}
+              />
             </motion.div>
           ))}
         </motion.div>
@@ -169,7 +178,7 @@ export const Services = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="flex justify-center mt-8"
         >
-          <Link to="/services" onClick={() => window.scrollTo(0, 0)}>
+          <Link to={servicesPath} onClick={() => window.scrollTo(0, 0)}>
             <Button variant="navy" className="group transition-all duration-300 text-sm flex items-center gap-2 navy-glow">
               Explore All Services
               <motion.span
