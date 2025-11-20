@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { Globe, Ship, Truck, Package, Shield, Target, Users, Award, CheckCircle } from 'lucide-react';
 
 const bangladeshNavPaths = {
-  home: "/bangladesh/home",
+  home: "/bangladesh",
   about: "/bangladesh/about",
   services: "/bangladesh/services",
   careers: "/bangladesh/careers",
@@ -19,7 +19,7 @@ const BangladeshAbout = () => {
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-r from-brand-navy to-brand-navy text-white px-6 mt-16">
+        <section className="py-20 bg-gradient-to-r from-brand-navy to-brand-navy text-white px-6 mt-16" style={{ backgroundImage: "url('/transport.jpg')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
           <div className="max-w-7xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -27,11 +27,11 @@ const BangladeshAbout = () => {
               transition={{ duration: 0.8 }}
               className="text-center"
             >
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-slate-50">
-                About <span className="text-slate-50">GGL</span>
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-slate-50 drop-shadow">
+                GGL Bangladesh: Logistics Excellence in Dhaka
               </h1>
-              <p className="text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed text-slate-50">
-                Singapore's premier logistics company, offering specialized expertise across warehousing, freight forwarding, and transportation
+              <p className="text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed text-slate-50 drop-shadow">
+                Local expertise powered by our global network to keep Bangladesh supply chains moving by sea, air, and road.
               </p>
             </motion.div>
           </div>
@@ -52,18 +52,16 @@ const BangladeshAbout = () => {
                 </h2>
                 <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
                   <p>
-                    GGL is a trusted global leader in LCL (Less-than-Container Load) consolidation. With a robust presence across
-                    <strong> North America, the UK, the Middle East, the Indian Subcontinent, Southeast Asia, and the Far East,</strong> we offer streamlined groupage services backed by strong customer support and competitive pricing.
+                    GGL Bangladesh blends global reach with Dhaka-based execution. Our team coordinates <strong>LCL consolidation, air freight,</strong> and <strong>domestic distribution</strong> tailored to the Bangladeshi market.
                   </p>
                   <p>
-                    We are strategically positioned in major transshipment hubs like
-                    <strong> Singapore, Malaysia, Sri Lanka, and Dubai,</strong> GGL operates <strong>direct weekly sailings</strong> to key global ports.
+                    Strategically positioned in <strong>Dhaka</strong> with access to <strong>Chattogram</strong> and air gateways, we connect shippers to worldwide ports through direct weekly sailings and competitive air schedules.
                   </p>
                   <p>
-                    One of our standout services is <strong>neutral LCL consolidation</strong>, designed for freight forwarders and NVOCCs who require confidential and competitive solutions.
+                    We prioritize <strong>neutral LCL solutions</strong> for forwarders and NVOCCs, backed by transparent pricing, reliable cut-offs, and dedicated customer service.
                   </p>
                   <p>
-                    Our advanced technology platform offers end-to-end shipment visibility. GGL stands as a dependable partner committed to neutrality, excellence, and customer success.
+                    With modern tracking and documentation support, GGL Bangladesh keeps your cargo visible from factory pickup to final delivery.
                   </p>
                 </div>
               </motion.div>
@@ -79,7 +77,7 @@ const BangladeshAbout = () => {
                   <img
                     alt="GGL Global Logistics"
                     className="w-full h-[600px] object-cover"
-                    src="/lovable-uploads/41795fb5-562d-45d1-a8d3-f26724bc079b.png"
+                    src="/projectcargo.png"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
                 </div>

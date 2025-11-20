@@ -5,7 +5,7 @@ import { Loader2 } from "lucide-react";
 import Hero from "@/components/home/Hero";
 
 const bangladeshNavPaths = {
-  home: "/bangladesh/home",
+  home: "/bangladesh",
   about: "/bangladesh/about",
   services: "/bangladesh/services",
   careers: "/bangladesh/careers",
@@ -30,18 +30,31 @@ const BangladeshHome = () => {
     <div className="min-h-screen flex flex-col relative">
       <Header navPaths={bangladeshNavPaths} />
       <main className="flex-grow pt-16">
-        <Hero />
+        <Hero
+          sliderImages={["/transport.jpg", "/airfrieght.jpg"]}
+          badgeText="Bangladesh Logistics Hub"
+          headline={'Delivering Excellence for <span class="text-yellow-500">Bangladesh</span> Supply Chains'}
+          subheadline="GGL Bangladesh connects Dhaka with global trade lanes through air, ocean, and land freight expertise backed by local service."
+          contactPath="/bangladesh/contact"
+        />
 
         <Suspense fallback={<LoadingComponent />}>
-          <AboutUs />
+          <AboutUs
+            learnMorePath="/bangladesh/about"
+            imageSrc="/cargoproject.png"
+          />
         </Suspense>
 
         <Suspense fallback={<LoadingComponent />}>
-          <Services />
+          <Services
+            servicesPath="/bangladesh/services"
+            cardLinkPrefix="/bangladesh/services"
+            singleDestination
+          />
         </Suspense>
 
         <Suspense fallback={<LoadingComponent />}>
-          <GlobalPresence />
+          <GlobalPresence linkPath="/bangladesh/about" />
         </Suspense>
 
         <Suspense fallback={<LoadingComponent />}>

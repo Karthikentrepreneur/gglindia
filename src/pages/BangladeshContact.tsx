@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Send, CheckCircle } from 'lucide-react';
 
 const bangladeshNavPaths = {
-  home: "/bangladesh/home",
+  home: "/bangladesh",
   about: "/bangladesh/about",
   services: "/bangladesh/services",
   careers: "/bangladesh/careers",

@@ -4,7 +4,11 @@ import { MapPin, Globe, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
-const GlobalPresence = () => {
+type GlobalPresenceProps = {
+  linkPath?: string;
+};
+
+const GlobalPresence = ({ linkPath = "/global-presence" }: GlobalPresenceProps) => {
   const locations = [
     { id: 1, name: "Melbourne", position: { top: "75%", left: "85%" }, country: "Australia" },
     { id: 2, name: "Singapore", position: { top: "58%", left: "75%" }, country: "Singapore" },
@@ -39,10 +43,10 @@ const GlobalPresence = () => {
         </div>
 
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }} viewport={{ once: true }} className="mt-10 text-center">
-          <Link to="/global-presence">
-            <motion.button 
-              whileHover={{ scale: 1.05 }} 
-              whileTap={{ scale: 0.98 }} 
+          <Link to={linkPath}>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
               animate={{ opacity: [1, 0.5, 1] }} 
               transition={{ repeat: Infinity, duration: 1.5 }} 
               className="inline-flex items-center gap-2 bg-brand-gold text-brand-navy text-lg font-bold rounded-lg shadow-lg hover:shadow-gold-glow transition-all duration-300 px-6 py-3"

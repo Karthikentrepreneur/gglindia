@@ -7,7 +7,7 @@ import { Plane, Ship, Truck, Warehouse } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const bangladeshNavPaths = {
-  home: "/bangladesh/home",
+  home: "/bangladesh",
   about: "/bangladesh/about",
   services: "/bangladesh/services",
   careers: "/bangladesh/careers",
