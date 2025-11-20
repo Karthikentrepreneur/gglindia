@@ -1,14 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { Users, UserCircle, SearchCode, Ship, Calendar, Globe } from 'lucide-react';
 
-const Hero = () => {
+type HeroProps = {
+  sliderImages?: string[];
+  badgeText?: string;
+  headline?: string;
+  subheadline?: string;
+  contactPath?: string;
+};
+
+const Hero = ({
+  sliderImages = ['/hom1.png'],
+  badgeText = 'Beyond Logistics, a Complete Solution',
+  headline = 'Delivering Excellence in <span class="text-yellow-500">Global Logistics</span> Solutions',
+  subheadline = "GGL brings over 25 years of expertise in international logistics, offering comprehensive solutions tailored to your business needs.",
+  contactPath = '/contact'
+}: HeroProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isCustomerPortalOpen, setIsCustomerPortalOpen] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
-
-  const sliderImages = [
-    '/hom1.png'
-  ];
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 300);
@@ -54,7 +64,7 @@ const Hero = () => {
       icon: <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />,
       title: 'Online Quote',
       description: 'Request a quote',
-      url: '/contact',
+      url: contactPath,
       external: false,
     },
   ];
@@ -96,18 +106,13 @@ const Hero = () => {
               <div className="text-yellow-500 animate-spin-slow">
                 <Globe className="w-8 h-8 sm:w-10 sm:h-10 drop-shadow-[0_0_8px_rgba(246,177,0,0.8)]" />
               </div>
-              <span className="inline-block bg-yellow-500/20 backdrop-blur-sm text-white px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium border border-yellow-500/30">
-                Beyond Logistics, a Complete Solution
-              </span>
+              <span className="inline-block bg-yellow-500/20 backdrop-blur-sm text-white px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium border border-yellow-500/30" dangerouslySetInnerHTML={{ __html: badgeText }} />
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              Delivering Excellence in <span className="text-yellow-500">Global Logistics</span> Solutions
-            </h1>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight" dangerouslySetInnerHTML={{ __html: headline }} />
 
             <p className="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed max-w-xl">
-              GGL brings over 25 years of expertise in international logistics,
-              offering comprehensive solutions tailored to your business needs.
+              {subheadline}
             </p>
           </div>
         </div>
