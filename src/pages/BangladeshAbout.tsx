@@ -22,7 +22,7 @@ const BangladeshAbout = () => {
         <section className="relative py-20 text-white px-6 mt-16 overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src="/airfrieght.jpg"
+              src="/lovable-uploads/1c085df7-9363-40dc-a724-ff004b473cac.png"
               alt="Bangladesh air freight"
               className="w-full h-full object-cover scale-105"
             />
