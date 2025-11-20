@@ -19,8 +19,17 @@ const BangladeshAbout = () => {
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-r from-brand-navy to-brand-navy text-white px-6 mt-16" style={{ backgroundImage: "url('/transport.jpg')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
-          <div className="max-w-7xl mx-auto">
+        <section className="relative py-20 text-white px-6 mt-16 overflow-hidden">
+          <div className="absolute inset-0">
+            <img
+              src="/airfrieght.jpg"
+              alt="Bangladesh air freight"
+              className="w-full h-full object-cover scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-navy via-brand-navy/90 to-brand-navy/70" />
+          </div>
+
+          <div className="relative max-w-7xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -77,7 +86,7 @@ const BangladeshAbout = () => {
                   <img
                     alt="GGL Global Logistics"
                     className="w-full h-[600px] object-cover"
-                    src="/projectcargo.png"
+                    src="/airfrieght.jpg"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
                 </div>
