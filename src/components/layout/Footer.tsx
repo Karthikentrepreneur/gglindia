@@ -112,25 +112,28 @@ export const Footer = () => {
         }} className="flex flex-col items-start md:items-end lg:items-start lg:pl-10 px-[110px]">
             <h3 className="font-bold text-lg text-brand-navy mb-4">Navigation</h3>
             <div className="flex flex-col gap-2 px-0 mx-0">
-              {[{
-              name: "Home",
-              path: "/"
-            }, {
-              name: "About",
-              path: "/about"
-            }, {
-              name: "Services",
-              path: "/services"
-            }, {
-              name: "Contact Us",
-              path: "/contact"
-            }, {
-              name: "Privacy Policy",
-              path: "/privacy-policy"
-            }, {
-              name: "Terms And Conditions",
-              path: "/terms-and-conditions"
-            }].map((link, index) => <Link key={index} to={link.path} className="text-gray-600 hover:text-brand-gold transition flex items-center gap-2">
+                {[{
+                name: "Home",
+                path: "/"
+              }, {
+                name: "About",
+                path: "/about"
+              }, {
+                name: "Services",
+                path: "/services"
+              }, {
+                name: "Bangladesh",
+                path: "/bangladesh/home"
+              }, {
+                name: "Contact Us",
+                path: "/contact"
+              }, {
+                name: "Privacy Policy",
+                path: "/privacy-policy"
+              }, {
+                name: "Terms And Conditions",
+                path: "/terms-and-conditions"
+              }].map((link, index) => <Link key={index} to={link.path} className="text-gray-600 hover:text-brand-gold transition flex items-center gap-2">
                   <ArrowRight size={14} className="text-brand-gold" />
                   {link.name}
                 </Link>)}

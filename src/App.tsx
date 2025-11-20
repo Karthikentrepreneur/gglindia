@@ -22,6 +22,10 @@ import ProjectCargo from "./pages/services/ProjectCargo";
 import CustomsClearance from "./pages/services/CustomsClearance";
 import GlobalPresence from "./pages/GlobalPresence";
 import { ScrollToTop } from "./components/common/ScrollToTop";
+import BangladeshHome from "./pages/BangladeshHome";
+import BangladeshAbout from "./pages/BangladeshAbout";
+import BangladeshServices from "./pages/BangladeshServices";
+import BangladeshContact from "./pages/BangladeshContact";
 
 // Create a new QueryClient instance
 const queryClient = new QueryClient();
@@ -39,10 +43,15 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/careers" element={<Careers />} />
+            <Route path="/bangladesh/careers" element={<Careers />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-and-conditions" element={<TermsOfUse />} />
             <Route path="/services/transportation" element={<Transportation />} />
             <Route path="/global-presence" element={<GlobalPresence />} />
+            <Route path="/bangladesh/home" element={<BangladeshHome />} />
+            <Route path="/bangladesh/about" element={<BangladeshAbout />} />
+            <Route path="/bangladesh/services" element={<BangladeshServices />} />
+            <Route path="/bangladesh/contact" element={<BangladeshContact />} />
             {/* Service specific pages */}
             <Route path="/services/liquid-transportation" element={<LiquidTransportation />} />
             <Route path="/services/air-freight" element={<AirFreight />} />
