@@ -86,7 +86,7 @@ const BangladeshAbout = () => {
                   <img
                     alt="GGL Global Logistics"
                     className="w-full h-[600px] object-cover"
-                    src="/airfrieght.jpg"
+                    src="/oceanf.png"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
                 </div>
