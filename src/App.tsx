@@ -26,6 +26,7 @@ import BangladeshHome from "./pages/BangladeshHome";
 import BangladeshAbout from "./pages/BangladeshAbout";
 import BangladeshServices from "./pages/BangladeshServices";
 import BangladeshContact from "./pages/BangladeshContact";
+import KycForm from "./pages/KycForm";
 
 // Create a new QueryClient instance
 const queryClient = new QueryClient();
@@ -51,6 +52,7 @@ function App() {
             <Route path="/bangladesh" element={<BangladeshHome />} />
             <Route path="/bangladesh/home" element={<BangladeshHome />} />
             <Route path="/bangladesh/about" element={<BangladeshAbout />} />
+            Route path="/kyc-details" element={<KycForm />} />
             <Route path="/bangladesh/services" element={<BangladeshServices />} />
             <Route path="/bangladesh/contact" element={<BangladeshContact />} />
             {/* Service specific pages */}
