@@ -52,7 +52,7 @@ function App() {
             <Route path="/bangladesh" element={<BangladeshHome />} />
             <Route path="/bangladesh/home" element={<BangladeshHome />} />
             <Route path="/bangladesh/about" element={<BangladeshAbout />} />
-            Route path="/kyc-details" element={<KycForm />} />
+            <Route path="/kyc-details" element={<KycForm />} />
             <Route path="/bangladesh/services" element={<BangladeshServices />} />
             <Route path="/bangladesh/contact" element={<BangladeshContact />} />
             {/* Service specific pages */}
