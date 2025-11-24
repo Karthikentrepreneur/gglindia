@@ -20,21 +20,21 @@ const PrivacyPolicyPage: React.FC = () => {
   }, []);
   const sections: Section[] = [{
     title: "Introduction",
-    content: "Welcome to GGL (India) Ltd [“GGL (India)”, “we”, “our”, “us”]. We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.We urge you to carefully read the following to comprehend how we collect, utilize, and safeguard your personal information. The policy also outlines your options concerning the use, accessibility, and correction of your personal information."
+    content: "Welcome to GGL LINE PVT LTD [“GGL (India)”, “we”, “our”, “us”]. We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.We urge you to carefully read the following to comprehend how we collect, utilize, and safeguard your personal information. The policy also outlines your options concerning the use, accessibility, and correction of your personal information."
   }, {
     title: "Our Commitment to Privacy",
     subsections: [{
       title: "Limited Data Collection",
-      content: "At GGL (India), we adhere to strict privacy principles by collecting only the essential information necessary for efficient communication. This streamlined approach simplifies user interactions and minimizes the exposure of personal details. Our commitment to minimal data collection reflects our dedication to user privacy and ensures robust security measures."
+      content: "At GGL LINE PVT LTD, we adhere to strict privacy principles by collecting only the essential information necessary for efficient communication. This streamlined approach simplifies user interactions and minimizes the exposure of personal details. Our commitment to minimal data collection reflects our dedication to user privacy and ensures robust security measures."
     }, {
       title: "Voluntary Disclosure",
-      content: "Users at GGL (India) have full control over the information they choose to share. Our policy emphasizes voluntary data submission, empowering users to determine the extent of their engagement. We respect individual privacy preferences, acknowledging that each user may have distinct comfort levels regarding information disclosure."
+      content: "Users at  (India) have full control over the information they choose to share. Our policy emphasizes voluntary data submission, empowering users to determine the extent of their engagement. We respect individual privacy preferences, acknowledging that each user may have distinct comfort levels regarding information disclosure."
     }, {
       title: "Purposeful Communication",
       content: "The information we collect serves a specific and essential purpose—facilitating effective communication. Whether responding to inquiries, providing relevant updates, or maintaining ongoing connections, user data is used exclusively for communication-related activities. This targeted approach ensures that personal information remains dedicated to its intended use, reinforcing our commitment to transparent and purpose-driven data management."
     }, {
       title: "User Empowerment",
-      content: "At GGL (India), we prioritize user control over their personal information. Beyond allowing users to choose what information to share, we empower them to manage their privacy settings and preferences. This approach enables individuals to tailor their interactions with GGL (India) according to their preferences, fostering trust and transparency in digital interactions."
+      content: "At  (India), we prioritize user control over their personal information. Beyond allowing users to choose what information to share, we empower them to manage their privacy settings and preferences. This approach enables individuals to tailor their interactions with GGL (India) according to their preferences, fostering trust and transparency in digital interactions."
     }]
   }, {
     title: "What Constitutes Personal Information?",
